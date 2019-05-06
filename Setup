@@ -1,1 +1,25 @@
 
+public static final String USERNAME = "xyz";
+public static final String AUTOMATE_KEY = "xyz";
+public static final String URL = "http://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
+public static void main(String[] args) throws Exception
+{
+      DesiredCapabilities caps = new DesiredCapabilities();
+      System.setProperty("java.net.useSystemProxies", "true");
+      System.setProperty("http.proxyHost","2.2.2.2");
+      System.setProperty("http.proxyPort","8080");
+      System.setProperty("http.proxyUser","xyz");
+      System.setProperty("http.proxyPass","xyz");
+      caps.setCapability("browser", "FireFox");
+      caps.setCapability("browser_version", "40.0");
+      caps.setCapability("os", "Windows");
+      caps.setCapability("browserstack.debug", "true");
+      caps.setCapability("browserstack.local", "true"); 
+      WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+      driver.get("http://www.google.com");
+      WebElement element = driver.findElement(By.name("q"));
+      element.sendKeys("BrowserStack");
+      element.submit();
+      System.out.println(driver.getTitle());
+      driver.quit();
+}
