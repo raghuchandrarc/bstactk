@@ -1,0 +1,19 @@
+
+cd grid
+java -jar selenium-server-standalone-3.141.59.jar -role hub
+
+
+
+run below commands machine b in command prompt
+
+
+cd grid
+java -Dwebdriver.chrome.driver="C:\grid\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://10.44.10.75:4444/grid/register -port 5566 -browser browserName="chrome",version=ANY,platform=WINDOWS,maxInstances=5 
+
+cd grid
+java -Dwebdriver.ie.driver="C:\grid\IEDriverServer32.exe" -jar selenium-server-standalone-3.141.59.jar -role webdriver -hub http://10.44.10.75:4444/grid/register -port 5566 -browser browserName="ie",version=ANY,platform=WINDOWS,maxInstances=5 
+
+
+
+
+http://10.44.10.75:4444/grid/console
